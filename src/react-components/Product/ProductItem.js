@@ -1,20 +1,31 @@
 import React from 'react'
 
 class ProductItem extends React.Component{
-    render(){
+    renderUpvoteButton(){
         return(
-            <li className='product-item'>
-                                <a className='upvote-button' href="#">
-                                    <span>
-                                        <i className='fa fa-sort-asc'></i>
-                                    </span>
-                                    
-                                    {this.props.upvote}
-                                </a>
-                                
+            <a className='upvote-button' href="#">
+                 <span>
+                    <i className='fa fa-sort-asc'></i>
+                </span>
+                {this.props.upvote}
+               </a>
+        );
+    }
 
-                                <img className='product-item-media' src={this.props.media}/>
-                                <section className='product-item-info'>
+
+    renderNewWindowIcon(){
+        return(
+            <a className='product-item-link' href={this.props.link}>
+                                    <span>
+                                        <i className='fa fa-external-link'></i>
+                                    </span>
+                                </a>
+        );
+    }
+
+    renderInfoSession(){
+        return(
+            <section className='product-item-info'>
                                 <a href='#'>
                                         <h2>{this.props.name}</h2>
                                     </a>
@@ -23,13 +34,17 @@ class ProductItem extends React.Component{
                                     <img className='small-avatar' src={this.props.maker.avatar}/>
                                 </a>
                                 </section>
-                                <a className='product-item-link' href={this.props.link}>
-                                    <span>
-                                        <i className='fa fa-external-link'></i>
-                                    </span>
-                                </a>
+        );
+    }
 
-                            </li> 
+    render(){
+        return(
+            <li className='product-item'>
+                {this.renderUpvoteButton()}
+                 <img className='product-item-media' src={this.props.media}/>
+                 {this.renderInfoSession()}
+                 {this.renderNewWindowIcon()}
+            </li> 
         );
     }
 }
